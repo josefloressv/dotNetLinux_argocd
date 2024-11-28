@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dotnetapp
+  template:
+    metadata:
+      labels:
+        app: dotnetapp
+    spec:
+      serviceAccountName: dotnetapp-sa
+      containers:
+      - name: dotnetapp
+        image: 730335285880.dkr.ecr.us-east-1.amazonaws.com/dotnetapp:v1
+        env:
+        - name: DbConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: dotnetapp-secret
+              key: DbConnectionString
