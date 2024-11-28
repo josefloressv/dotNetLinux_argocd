@@ -15,7 +15,7 @@ spec:
       serviceAccountName: dotnetapp-sa
       containers:
       - name: dotnetapp
-        image: 730335285880.dkr.ecr.us-east-1.amazonaws.com/dotnetapp:v1
+        image: 730335285880.dkr.ecr.us-east-1.amazonaws.com/dotnetapp:v2
         env:
         - name: DbConnectionString
           valueFrom:
